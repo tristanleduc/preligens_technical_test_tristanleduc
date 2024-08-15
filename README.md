@@ -250,7 +250,12 @@ The PR curve shows us that the model has a relatively high precision for the car
 
 Since the model is supposed to be deployed on embedded systems, real-time performance is crucial. The fine-tuned YOLOv8n model was tested in a scenario where it deals with processing images at a rate of 30 FPS. The model was able to maintain real-time performance, demonstrating its suitability for deployment on UAVs and other embedded platforms, as it can be seen in the video below. We compare the performance of the regular YOLOv8n model with the fine-tuned model. We overlay the bounding boxes on the detected objects to visualize the detection performance, and display a running inference time counter to show the real-time processing speed.
 
-Check out the results in the results folder : [Real-time demo](results/real_time_demo)
+Check out the results in the results folder, in the real_time_demo sub-folder.
+
+Here are two preview gifs of the real-time demo of the fine-tuned YoloV8n model:
+![Real-time demo 1](doc_images/real_time_preview.gif)
+
+![Real-time demo 2](doc_images/real_time_preview_2.gif)
 
 The real-time results corroborate the model's efficiency and accuracy, even in dynamic scenarios with multiple objects and varying lighting conditions. 
 The regular model catches some objects but misclassifies most, aside from cars. This highlights the importance of domain-specific fine-tuning for aerial imagery.
