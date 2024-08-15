@@ -5,7 +5,7 @@
 
 📝 **Note**: This project was completed as part of my technical interview for the role of computer vision engineer at Preligens, with a deadline on the 15/08/2024.
 
-All of the answers to Part 1 (theoretical questions) can be found in the [Theoretical Questions](Theoretical_Questions.md) file.
+All of the answers to Part 1 (theoretical questions) can be found in the [Theoretical Questions](Theoretical_questions.md) file.
 The instructions of the interview are saved in the [Interview_Instructions](instructions.pdf) file.
 
 The answers to Part 2 (practical questions) are detailed below.
