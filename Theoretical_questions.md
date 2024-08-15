@@ -3,9 +3,9 @@
 Below are all the answers to the theoretical questions of the technical interview.
 
 
-1. Discuss a few strategies for implementing a embeded AI for objectf detection on full motion video from UAV: 
+## Discuss a few strategies for implementing a embeded AI for objectf detection on full motion video from UAV: 
 
-Object detection on full-motion video is a crucial application for agriculture to monitor crops, for surveillance in the identification of key targets on the field, and in other countless domains. Running it on a UAV (unmanned aerial vehicle) such as a drone involves having to run models and algorithms on relatively small configurations with limited compute and memory. It is for that reason that we would have to find a tradeoff between performance and efficiency, by picking an optimized model like TinyYOLO and MobileNet, both optimized to run on devices with limited resources. These models have been tested on embedded devices and provide a good balance between performance and resource usage. A UAV would also require real-time processing and near-instantaneous response, as cameras in full-motion video capture 30 frames per second or more, most of the time. Heavier models that are unoptimized for embedded devices could exhibit significant processing latency, leading to unresponsive object detection. That corroborates the need for using TinyYOLO and MobileNet which are well-suited for this use.
+Object detection on full-motion video is a crucial application for agriculture to monitor crops, for surveillance in the identification of key targets on the field, and in other countless domains. Running it on a UAV (unmanned aerial vehicle) such as a drone involves having to run models and algorithms on relatively small configurations with limited compute and memory. It is for that reason that we would have to find a tradeoff between performance and efficiency, by picking an optimized model like TinyYOLO and MobileNet, both optimized to run on devices with limited resources. These models have been tested on embedded devices and provide a good balance between performance and resource usage. A UAV would also require real-time processing and near-instantaneous response, as cameras in full-motion video capture 30 frames per second or more, most of the time. Heavier models that are unoptimized for embedded devices could exhibit significant processing latency, leading to unresponsive object detection. That corroborates the need for using Yolov8 or MobileNet which are well-suited for this use.
 
 When it comes to the implementation of the model, the task at hand requires training the chosen model on a dataset, which could be a publicly available dataset like UAVDT (UAV Detection and Tracking) that provides 80,000 annotated images captured by UAVs in various scenarios. This dataset offers a solid initial set of data to run tests. At a later stage, we could fine-tune the obtained model on a specific in-house dataset to improve its accuracy. I would use the PyTorch framework to train the model, as it is the framework I am most familiar with and is a reference framework for model training in the industry.
 
@@ -14,9 +14,7 @@ The implementation would then require us to create an inference pipeline. I woul
 Once this is done, I would conduct a series of tests with this configuration to assess whether the latency and accuracy are acceptable using test images and out-of-distribution images that the model hasn’t seen yet. Subsequently, I would implement optimizations such as quantization, which involves converting the model weights from floating points to integers, thereby reducing memory usage and improving inference speed. Additionally, I could perform pruning to further optimize the inference pipeline. Ultimately, the goal is to obtain a routine that captures images, preprocesses them, runs the model, and detects objects in real-time.
 
 
-
-
-2. What are the challenges for optimizing such a system on an embedded platform? Do you recommend specific stacks, hardware or technology and why?
+## What are the challenges for optimizing such a system on an embedded platform? Do you recommend specific stacks, hardware or technology and why?
 
 Optimizing a system on an embedded platform involves several challenges related to both the software and hardware stacks, as well as the specific technologies and libraries used.
 
@@ -34,7 +32,7 @@ The technologies we would choose are also key to optimizing the system. Essentia
 
 The workflow involving PyTorch for training, exporting to ONNX, and utilizing TensorRT for inference is chosen for several reasons that I mentioned before. PyTorch offers ease of use and flexibility during the development and training phase. Exporting the model to ONNX provides compatibility with various platforms and optimization tools. TensorRT is specifically designed to optimize models for NVIDIA GPUs, offering significant performance improvements in terms of inference speed and efficiency. This workflow ensures that the system can meet the real-time processing requirements while operating within the constraints of an embedded platform.
 
-3. What factors could impact the quality of the algorithm? How would you mitigate such risk?
+## What factors could impact the quality of the algorithm? How would you mitigate such risk?
 
 Several factors can impact the quality of the algorithm used for object detection on a UAV, and understanding these factors is crucial to mitigate potential risks.
 
