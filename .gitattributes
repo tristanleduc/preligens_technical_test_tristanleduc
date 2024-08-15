@@ -1,0 +1,4 @@
+*.onnx filter=lfs diff=lfs merge=lfs -text
+*.pt filter=lfs diff=lfs merge=lfs -text
+data/still_frames filter=lfs diff=lfs merge=lfs -text
+data/videos filter=lfs diff=lfs merge=lfs -text

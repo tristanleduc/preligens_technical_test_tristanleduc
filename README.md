@@ -62,7 +62,7 @@ LLMs were used to refactor the code and improve readability.
 
 ## Instructions for Running Experiments
 
-To run the experiments:
+To run the experiments and evaluate the model:
 
 - Clone the repository and navigate to the project directory.
 - Create a new virtual environment for isolation:
@@ -76,6 +76,27 @@ To run the experiments:
     pip install -r requirements.txt
     ```
 
+To download the dataset and pre-trained weights:
+- Download the VisDrone2019-DET test set:
+Click [here](https://drive.google.com/open?id=1PFdW_VFSCfZ_sTSZAGjQdifF_Xd5mf0V) to download the test set.
+After downloading, extract the contents of the zip file. Place the Extracted Folder in: 
+    ```
+    preligens_technical_test_tristan/data/still_frames/VisDrone2019DETtest/
+    ```
+- Create a duplicate of VisDrone2019DETtest folder and copy it to the following directory:
+    ```
+    preligens_technical_test_tristan/data/videos/VisDrone2019DETtest_copy/
+    ```
+- Download the UAV benchmark dataset from [here](https://drive.google.com/file/d/1661_Z_zL1HxInbsA2Mll9al-Ax6Py1rG/view)
+- Place the downloaded zip file in the following directory:
+    ```
+    preligens_technical_test_tristan/data/videos/
+    ```
+- Download the pre-trained weights for YOLOv8n:
+Click [here](https://drive.google.com/drive/folders/1kQDG3YmqBtb8lxBgtzux8_mGv6DPHqqo?usp=sharing) to download the pre-trained weights. Place the content of the downloaded folder in the following directory:
+    ```
+    preligens_technical_test_tristan/models/
+    ```
 - Run the Jupyter notebook evaluation.ipynb to reproduce the experiments and visualize the results.
 
 Follow the instructions in the notebook to run various experiments, including:
@@ -88,6 +109,11 @@ A standalone real-time demo script is also available in the src directory. To ru
 
 ```
 python real_time_demo.py path/to/your/video.mp4
+```
+
+To download the annotated test images and real-time demo results, click [here](https://drive.google.com/drive/folders/165EJtPX5V6CmH79Hk3C3lzgOPrxIn-wS?usp=sharing). Place the contents in the results directory.
+```
+preligens_technical_test_tristan/results/
 ```
 
 ## Problem Statement
@@ -104,7 +130,7 @@ This project aims to create a system capable of performing object detection on U
 
 ### Choice of YOLOv8
 
-YOLOv8 was selected as the core algorithm for this project due to its architecture, which is particularly well-suited for real-time object detection in UAV imagery. YOLOv8's single-stage detector approach processes the entire image in one forward pass, crucial for real-time applications on embedded systems. Its feature pyramid network allows effective detection of objects at various scales, addressing the challenge of varying altitudes in UAV imagery.
+YOLOv8 was selected as the core model for this project due to its architecture, which is particularly well-suited for real-time object detection in UAV imagery. YOLOv8's single-stage detector approach processes the entire image in one forward pass, crucial for real-time applications on embedded systems. Its feature pyramid network allows effective detection of objects at various scales, addressing the challenge of varying altitudes in UAV imagery.
 
 The CSPDarknet backbone of YOLOv8 provides an excellent balance between computational efficiency and feature extraction capability. This is particularly important for our use case, where we need to run complex computations on resource-constrained UAV hardware. Additionally, YOLOv8 uses an anchor-free approach, which simplifies the detection process and can lead to better performance, especially for small objects that are common in aerial imagery.
 
@@ -231,7 +257,7 @@ The PR curve shows us that the model has a relatively high precision for the car
 
 Since the model is supposed to be deployed on embedded systems, real-time performance is crucial. The fine-tuned YOLOv8n model was tested in a scenario where it deals with processing images at a rate of 30 FPS. The model was able to maintain real-time performance, demonstrating its suitability for deployment on UAVs and other embedded platforms, as it can be seen in the video below. We compare the performance of the regular YOLOv8n model with the fine-tuned model. We overlay the bounding boxes on the detected objects to visualize the detection performance, and display a running inference time counter to show the real-time processing speed.
 
-Check out the [real-time demo of the fine-tuned YOLOv8n](https://tristanleduc.github.io/preligens_technical_test/doc_images/real_time_preview.html) to see the finetuned model in action.
+Check out the results in the results folder : [Real-time demo](results/real_time_demo)
 
 The real-time results corroborate the model's efficiency and accuracy, even in dynamic scenarios with multiple objects and varying lighting conditions. 
 The regular model catches some objects but misclassifies most, aside from cars. This highlights the importance of domain-specific fine-tuning for aerial imagery.
