@@ -171,13 +171,10 @@ VisDrone images are captured from UAVs, providing the exact perspective our mode
 
 ### Training Process
 
-The training process involved:
-1. Data preprocessing and augmentation
-2. Transfer learning from COCO pre-trained weights
-3. Hyperparameter optimization
-4. Regular validation to monitor overfitting
+I began with a version of YOLOv8n pre-trained on the COCO dataset, which provides a solid foundation for general object detection tasks. Using the Ultralytics library, I fine-tuned this model for 19 epochs on my local Mac.
 
-We used the Ultralytics library for its comprehensive features and optimizations.
+The Ultralytics open-source codebase offers several advantages including the availability of pre-trained models for object detection, ptimizations for real-time inference, flexibility in export formats, including ONNX
+Comprehensive data logging and visualization tools which is why I chose to use it for this project.
 
 ## Results
 
