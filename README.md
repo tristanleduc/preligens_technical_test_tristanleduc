@@ -193,10 +193,6 @@ For instance, the model was able to detect pedestrians and vehicles with high ac
 
 ### Quantitative Evaluation
 
-Performance on VisDrone validation set (548 images):
-
-## Quantitative Evaluation
-
 We compared the regular YOLOv8n to the fine-tuned model on the VisDrone validation set (548 images). The results show a significant improvement in performance after fine-tuning:
 
 | Class           | Images | Instances | Box(P) | R     | mAP50 | mAP50-95 |
